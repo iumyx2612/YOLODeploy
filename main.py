@@ -1,5 +1,5 @@
 import time
-import sys
+import sys, os
 sys.path.append("yolov5")
 from PIL import Image
 import numpy as np
@@ -16,6 +16,8 @@ from ObjectDetUtils.draw import draw_boxes_with_label
 
 def store_model():
     prefix = "checkpoints"
+    if not os.path.exists(prefix):
+        os.makedirs(prefix)
     all_models = ["yolov5n.pt", "yolov5s.pt", "yolov5m.pt"]
     model_list = []
     for i, model in enumerate(all_models):
